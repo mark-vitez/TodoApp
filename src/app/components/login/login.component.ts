@@ -17,16 +17,15 @@ export class LoginComponent implements OnInit {
     
   }
 
-  login(){
-    console.log(this.email+"-"+this.password);
-    if(!this.email || !this.password){
-      alert("please fill out every form");
-      return;
-    }
-    
-    console.log("OK response");
-    
+  getLists(){
+    this._httpService.getRequest('');
+  }
 
-    //this._httpService.ping();
+  login(){
+    this._httpService.loginUser();    
+  }
+
+  refreshToken(){
+    this._httpService.refreshToken();
   }
 }
