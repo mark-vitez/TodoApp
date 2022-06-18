@@ -28,4 +28,8 @@ export class LoginComponent implements OnInit {
   refreshToken(){
     this._httpService.refreshToken();
   }
+
+  public clickSubmit(){
+    var button = document.querySelector<HTMLButtonElement>("#submitBtn").click();
+  }
 }
