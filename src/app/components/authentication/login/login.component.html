@@ -1,0 +1,12 @@
+<form (ngSubmit)="sendLoginInfo()" class="auth-form">
+  <div class="form-floating">
+    <input id="email" class="form-control" type="email" name="email" placeholder="name@example.com" [(ngModel)]="email">
+    <label for="email" class="form-label">Email address</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" class="form-control" placeholder="name@example.com" type="password" id="password"
+      name="password" [(ngModel)]="password">
+    <label for="password" class="form-label">Password</label>
+  </div>
+  <button id="submitBtn" type="submit" class="hidden"></button>
+</form>

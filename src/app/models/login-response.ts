@@ -1,14 +1,14 @@
 import { HTTP_STATE } from "../constants"
 
-export interface ILoginResponse{
+export interface ILoginResponse {
     data: ILoginResponseData,
     state: HTTP_STATE,
     message: string
 }
 
-export interface ILoginResponseData{
+export interface ILoginResponseData {
     userId: string,
-    token: string,
+    accessToken: string,
     refreshToken: string
 }
 

@@ -4,6 +4,7 @@ export const LOCAL_STORAGE_KEYS = {
     ACCESS_TOKEN: `${_lsKey}-ACCESS-TOKEN`,
     REFRESH_TOKEN: `${_lsKey}-REFRESH-TOKEN`,
     USER_ID: `${_lsKey}-USER-ID`,
+    USER: `${_lsKey}-USER`,
 };
 
 export enum HTTP_STATE {
@@ -13,7 +14,7 @@ export enum HTTP_STATE {
 
 export enum HttpStatusCode {
 
-    CONTINUE = 100, 
+    CONTINUE = 100,
     SWITCHING_PROTOCOLS = 101,
     PROCESSING = 102,
     OK = 200,

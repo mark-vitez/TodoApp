@@ -1,28 +1,35 @@
 $disabled: #bbaab8;
-$form-color: #776483; 
+$form-color: #776483;
 $accent-start: #292643;
 $accent-end: #44426e;
-$form-gradient: linear-gradient(180deg , $accent-end, $form-color);
+$form-gradient: linear-gradient(180deg, $accent-end, $form-color);
 
-.page-content{
+.page-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;    
+    justify-content: center;
     align-items: center;
-    height: 75%; 
-    .login-container{        
+    height: 75%;
+
+    .auth-container {
         width: 60%;
         max-width: 600px;
         border-radius: 24px;
+        height: fit-content;
 
-        .title{
+        -webkit-transition: height 1s ease-in-out;
+        -moz-transition: height 1s ease-in-out;
+        -o-transition: height 1s ease-in-out;
+        transition: height 1s ease-in-out;
+
+        .title {
             display: flex;
             justify-content: space-between;
             background-color: $disabled;
             border-top-left-radius: 24px;
-            border-top-right-radius: 24px;           
+            border-top-right-radius: 24px;
 
-            .link{
+            .link {
                 width: 50%;
                 text-align: center;
                 padding: 8px;
@@ -30,51 +37,45 @@ $form-gradient: linear-gradient(180deg , $accent-end, $form-color);
                 border-top-right-radius: 24px;
                 border-bottom-right-radius: -8px;
                 background-color: transparent;
+                cursor: pointer;
             }
 
-            .active{
+            .active {
                 background-color: $accent-end;
                 color: white;
             }
         }
 
-        .form-floating{
-            font-size: 16px;
+        .auth-form {
+            background-image: $form-gradient;
+            padding: 32px;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
         }
 
-        .form-control{
-            border-radius: 14px;
-            font-size: 16px;
-            margin-bottom: 12px;
-        }
-
-        .custom-button{
+        .custom-button {
             background-color: white;
-            color:black;
+            color: black;
             width: fit-content;
             padding: 8px 48px;
             border-radius: 24px;
             margin: auto;
             margin-top: 24px;
+            cursor: pointer;
         }
 
-        .auth-form{
-            background-image: $form-gradient;
-            padding: 32px;
-            border-bottom-left-radius: 24px;
-            border-bottom-right-radius: 24px;
 
-        }
     }
 }
 
-.hidden{
-    display: none;
-}
+
+
+
+
 
 @media screen and (max-width: 400px) {
-    .page-content{
-        .login-container{        
+    .page-content {
+        .auth-container {
             width: 90%;
             max-width: 600px;
             border-radius: 24px;

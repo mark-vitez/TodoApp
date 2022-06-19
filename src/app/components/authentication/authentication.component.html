@@ -1,0 +1,18 @@
+<div class="page-content">
+    <div class="auth-container">
+        <div class="title">
+            <div #loginTitle class="link active" (click)="selectAuthType(0)">Login</div>
+            <div #registrationTitle class="link" (click)="selectAuthType(1)">Register</div>
+        </div>
+        <div class="auth-form">
+            <app-login *ngIf="isLogin" (userInfo)="login($event)"></app-login>
+            <app-registration *ngIf="!isLogin"></app-registration>
+            <div class="custom-button" (click)="clickSubmit()">
+                Login
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>Hover me</div>
