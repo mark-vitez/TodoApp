@@ -1,0 +1,68 @@
+
+$disabled: #bbaab8;
+$form-color: #776483;
+$accent-start: #292643;
+$accent-end: #44426e;
+$header-gradient: linear-gradient(180deg, $accent-end, $form-color);
+
+.card-header{
+    background: $header-gradient;
+    color: white;
+}
+
+.todo-card{
+    box-sizing: content-box;
+    height: fit-content;
+    
+    .header{
+        background: $header-gradient;
+        color: white;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        padding: 8px 12px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .header-text{
+            width: 90%;
+        }
+
+        .header-icon{
+            width: 24px;
+            height: 24px;
+            filter: invert(99%) sepia(3%) saturate(192%) hue-rotate(106deg) brightness(112%) contrast(100%);
+        }
+    }
+
+    .content{
+        height: fit-content;
+        ul{
+            height: 126px;
+            min-height: 126px;
+            padding: 0;
+            border: 1px solid lightgray;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            li{
+                font-size: 16px;         
+                height: 42px;       
+                width: 100%;
+                text-decoration: none;
+                list-style: none;
+                border: 0.5px solid lightgray;
+                border-collapse: collapse;
+                padding: 8px 12px !important;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            li:nth-child(3){
+                border: none;
+            }           
+        }
+        
+    }
+}

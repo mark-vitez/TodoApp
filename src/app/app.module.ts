@@ -10,6 +10,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HeaderComponent } from './nav/header/header.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { RegistrationComponent } from './components/authentication/registration/registration.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { TodoListComponent } from './components/main-page/todo-list/todo-list.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { RegistrationComponent } from './components/authentication/registration/
     LoginComponent,
     HeaderComponent,
     AuthenticationComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MainPageComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,

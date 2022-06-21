@@ -8,7 +8,9 @@ export interface ILoginResponse {
 
 export interface ILoginResponseData {
     userId: string,
-    accessToken: string,
+    firstName: string,
+    lastName: string,
+    token: string,
     refreshToken: string
 }
 

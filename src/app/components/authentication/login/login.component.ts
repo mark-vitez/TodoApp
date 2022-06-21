@@ -15,10 +15,9 @@ export class LoginComponent implements OnInit {
 
   @Output() userInfo = new EventEmitter<ILoginModel>();
 
-  constructor(private _httpService: HttpService, _globalService: GlobalEvents) { }
+  constructor() { }
 
   ngOnInit(): void {
-
   }
 
   public sendLoginInfo() {

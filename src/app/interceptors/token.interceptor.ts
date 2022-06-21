@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 import { HttpStatusCode, HTTP_STATE, LOCAL_STORAGE_KEYS } from "../constants";
 import { ILoginResponse } from "../models/login-response";
 import { GlobalEvents } from "../services/globalEvents";
+import { UserService } from "../services/user.service";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -15,14 +16,14 @@ export class TokenInterceptor implements HttpInterceptor {
 
 
 
-  constructor(private _httpClient: HttpClient, private _globalEvents: GlobalEvents) { }
+  constructor(private _httpClient: HttpClient, private _userSevice: UserService) { }
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
 
-    var token = localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
+    var token = this._userSevice.getAccessToken();
     if (token) {
 
       console.log(token);
@@ -59,16 +60,14 @@ export class TokenInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler): Observable<HttpEvent<any>> {
     let body = {
-      userId: localStorage.getItem(LOCAL_STORAGE_KEYS.USER_ID),
-      token: localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN),
-      refreshToken: localStorage.getItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN)
+      userId: this._userSevice.user.userId,
+      token: this._userSevice.getAccessToken(),
+      refreshToken: this._userSevice.getRefreshToken()
     }
     return this._httpClient.post<ILoginResponse>(this._apiBaseUrl + '/account/refreshToken', body, { responseType: "json" }).pipe(
       switchMap((res) => {
         if (res.state === HTTP_STATE.SUCCESS) {
-          localStorage.setItem(LOCAL_STORAGE_KEYS.USER_ID, res.data.userId);
-          localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, res.data.token);
-          localStorage.setItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN, res.data.refreshToken);
+          this._userSevice.refreshToken(res.data.token,res.data.refreshToken);
         }
         let token = `Bearer ${res.data.token}`;
         let newReq = req.clone({ setHeaders: { "Authorization": token } });

@@ -1,10 +1,11 @@
 .header-container{
     width: 100%;
-    background-color: red;
+    background-color: #44426e;
+    color:white;
+    
     .header-content{
         width: 80%;
-        margin: 0 auto;
-        background-color: pink;
+        margin: 0 auto;        
         display: flex;
         justify-content: space-between;
         align-items: center;

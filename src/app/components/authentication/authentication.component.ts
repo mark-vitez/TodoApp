@@ -17,10 +17,9 @@ export class AuthenticationComponent implements OnInit {
   public isLogin: boolean = true;
 
 
-  constructor(private _httpService: HttpService, globalService: GlobalEvents) { }
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit(): void {
-
   }
 
   selectAuthType(type: AuthenticationType) {
@@ -37,17 +36,8 @@ export class AuthenticationComponent implements OnInit {
     }
   }
 
-
-  getLists() {
-    this._httpService.getRequest('');
-  }
-
   login(loginModel: ILoginModel) {
     this._httpService.loginUser(loginModel);
-  }
-
-  refreshToken() {
-    this._httpService.refreshToken();
   }
 
   public clickSubmit() {

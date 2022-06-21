@@ -7,6 +7,10 @@ export const LOCAL_STORAGE_KEYS = {
     USER: `${_lsKey}-USER`,
 };
 
+export const HTTP_ACTIONS = {
+    GET_USER_LISTS:'/TodoLists/getUserLists'
+}
+
 export enum HTTP_STATE {
     FAIL = 0,
     SUCCESS = 1

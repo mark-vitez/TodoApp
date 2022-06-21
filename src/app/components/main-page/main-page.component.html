@@ -1,0 +1,20 @@
+<div class="main-content">
+ 
+<div class="add-line">
+    <div class="line">
+    </div>
+    <div class="add">
+        <img src="../../../assets/button-icons/add.svg" alt="add">
+    </div>
+    <div class="line-continuation">
+    </div>
+
+</div>
+
+<div class="row">
+    <div *ngFor="let number of numbers; let i = index" class="col-lg-3 col-md-4 col-sm-6 col-6 todo-list">
+      <app-todo-list ></app-todo-list>
+    </div>
+</div>
+
+</div>
