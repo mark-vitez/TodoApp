@@ -1,0 +1,19 @@
+<!-- Button trigger modal -->
+<button type="button" #trigger data-bs-toggle="modal" data-bs-target="#confDialog" style="display: none">
+</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="confDialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+       <div class="modal-body">
+          Are you sure?
+        </div>
+        <div class="modal-footer">
+            <div class="cust-button" data-bs-dismiss="modal" (click)="sendConfirmation(false)">No</div>
+            <div class="cust-button" data-bs-dismiss="modal" (click)="sendConfirmation(true)">Yes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

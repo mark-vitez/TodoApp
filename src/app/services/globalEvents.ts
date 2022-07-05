@@ -11,10 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class GlobalEvents {
 
-    public tokenIsRefreshing = false;
+    public userLoggedIn = new BehaviorSubject(false);
 
     constructor() {
-
-
     }
 }

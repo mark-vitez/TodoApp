@@ -6,13 +6,10 @@
         </div>
         <div class="auth-form">
             <app-login *ngIf="isLogin" (userInfo)="login($event)"></app-login>
-            <app-registration *ngIf="!isLogin"></app-registration>
+            <app-registration *ngIf="!isLogin" (registrationForm)="register($event)"></app-registration>
             <div class="custom-button" (click)="clickSubmit()">
-                Login
+                {{buttonLabel}}
             </div>
         </div>
     </div>
 </div>
-
-
-<div>Hover me</div>

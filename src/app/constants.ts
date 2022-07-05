@@ -8,7 +8,8 @@ export const LOCAL_STORAGE_KEYS = {
 };
 
 export const HTTP_ACTIONS = {
-    GET_USER_LISTS:'/TodoLists/getUserLists'
+    GET_USER_LISTS:'/TodoLists/getUserLists',
+    GET_LIST:'/TodoLists/getList'
 }
 
 export enum HTTP_STATE {

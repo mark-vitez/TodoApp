@@ -1,6 +1,6 @@
-import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HttpClient, HttpEvent, HttpEventType, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable, of, throwError } from "rxjs";
 import { tap, catchError, filter, take, switchMap } from "rxjs/operators"
 import { environment } from "src/environments/environment";
 import { HttpStatusCode, HTTP_STATE, LOCAL_STORAGE_KEYS } from "../constants";
@@ -28,25 +28,29 @@ export class TokenInterceptor implements HttpInterceptor {
 
       console.log(token);
       token = `Bearer ${token}`
-      var newReq = req.clone({ setHeaders: { "Authorization": token } });
-
-      console.log(newReq);
+      var newReq = req.clone({ setHeaders: { "Authorization": token } });     
       return next.handle(newReq).pipe(
         catchError((err) => {
           if (err.status === HttpStatusCode.UNAUTHORIZED) {
             console.log('Token expired');
-            //return of(err)            
             return this._refreshTokenAndRepeatReq(req, next);
-
           }
           return of(err)
-        }
-        ));
+        }),
+
+        tap(evt => {      
+          if(evt.type === HttpEventType.Response){
+            console.log(evt['body']);          
+          }
+        })
+        );
     }
 
     return next.handle(req).pipe(
       tap(evt => {
-        console.log(evt);
+        if(evt.type === HttpEventType.Response){
+          console.log(evt['body']);          
+        }
       }),
       catchError(err => {
         console.log('Pls log in');
@@ -61,17 +65,38 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler): Observable<HttpEvent<any>> {
     let body = {
       userId: this._userSevice.user.userId,
+      firstName: this._userSevice.user.firstName,
+      lastName: this._userSevice.user.lastName,
       token: this._userSevice.getAccessToken(),
       refreshToken: this._userSevice.getRefreshToken()
     }
+    console.log('refresh');
+    console.log(body);
+    
+    
     return this._httpClient.post<ILoginResponse>(this._apiBaseUrl + '/account/refreshToken', body, { responseType: "json" }).pipe(
       switchMap((res) => {
+        console.log('refresh ');
+        
+
         if (res.state === HTTP_STATE.SUCCESS) {
           this._userSevice.refreshToken(res.data.token,res.data.refreshToken);
+          let token = `Bearer ${res.data.token}`;
+          let newReq = req.clone({ setHeaders: { "Authorization": token } });
+          return next.handle(newReq);
+        } else {
+          console.log('token refresh failed logging out');          
+          this._userSevice.logOut();
+          return of(null);
         }
-        let token = `Bearer ${res.data.token}`;
-        let newReq = req.clone({ setHeaders: { "Authorization": token } });
-        return next.handle(newReq);
+
+
+      }),
+      catchError((err) => {
+        console.log(err);
+        console.log('errr caught');
+        
+        return throwError(err);        
       })
     );
   }

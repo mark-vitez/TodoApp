@@ -1,0 +1,21 @@
+<div class="todo-card" (click)="openList(todoList.id)">
+    <div class="header">
+        <div class="header-text trim-ends">{{todoList.name}}</div>
+        <img src="../../../../assets/button-icons/delete.svg" class="header-icon" alt="delete">
+    </div>
+    <div class="content">
+        <ul>
+            <li class="trim-ends">{{todoList.tasks[0]?.description}}</li>
+            <li class="trim-ends">{{todoList.tasks[1]?.description}}</li>
+            <li class="trim-ends">{{todoList.tasks[2]?.description}}</li>            
+        </ul>
+    </div>
+    <div class="footer">
+        <span class="date">
+            {{todoList.creationDate | date:'shortDate'}}
+        </span>
+        <span class="date">
+            ...
+        </span>    
+    </div>
+</div>

@@ -1,7 +1,12 @@
+import { getLocaleFirstDayOfWeek } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { HTTP_STATE } from 'src/app/constants';
+import { IUserModel } from 'src/app/models/IUserModel';
 import { ILoginModel } from 'src/app/models/login-model';
-import { GlobalEvents } from 'src/app/services/globalEvents';
+import { IRegistrationModel } from 'src/app/models/registration-model';
 import { HttpService } from 'src/app/services/http.service';
+import { UserService } from 'src/app/services/user.service';
 import { AuthenticationType } from './models/AuthType';
 
 @Component({
@@ -15,12 +20,17 @@ export class AuthenticationComponent implements OnInit {
   @ViewChild('registrationTitle') regTitle: ElementRef;
 
   public isLogin: boolean = true;
+  public buttonLabel = 'Login';
 
-
-  constructor(private _httpService: HttpService) { }
+  constructor(
+    private _httpService: HttpService,
+    private _userService:UserService,
+    private _router:Router) { }
 
   ngOnInit(): void {
   }
+
+
 
   selectAuthType(type: AuthenticationType) {
     console.log(type);
@@ -29,19 +39,39 @@ export class AuthenticationComponent implements OnInit {
       this.isLogin = true;
       this.loginTitle.nativeElement.classList.add('active');
       this.regTitle.nativeElement.classList.remove('active');
+      this.buttonLabel = "Login";
     } else if (type === AuthenticationType.REGISTER && this.login) {
       this.isLogin = false;
       this.loginTitle.nativeElement.classList.remove('active');
       this.regTitle.nativeElement.classList.add('active');
+      this.buttonLabel = "Registration";
     }
   }
 
-  login(loginModel: ILoginModel) {
-    this._httpService.loginUser(loginModel);
+  public login(loginModel: ILoginModel) {
+    this._httpService.loginUser(loginModel).subscribe(res => {
+      console.log(res);
+
+      if (res.state === HTTP_STATE.SUCCESS) {
+        let user: IUserModel = res.data;
+        this._userService.saveUser(user);
+        this._router.navigate(['home']);
+      } else {
+        alert('login failed try again');
+      }
+    });;
+  }  
+
+  public register(registrationModel: IRegistrationModel) {
+    this._httpService.registerUser(registrationModel).subscribe( res => {
+      if(res.state === HTTP_STATE.SUCCESS){
+        this.login({email:registrationModel.email, password: registrationModel.password});
+      }
+    })
   }
 
   public clickSubmit() {
-    var button = document.querySelector<HTMLButtonElement>("#submitBtn")?.click();
+    document.querySelector<HTMLButtonElement>("#submitBtn")?.click();
   }
 }
 

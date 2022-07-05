@@ -23,8 +23,4 @@ export class LoginComponent implements OnInit {
   public sendLoginInfo() {
     this.userInfo.emit({ email: this.email, password: this.password });
   }
-
-  public clickSubmit() {
-    var button = document.querySelector<HTMLButtonElement>("#submitBtn").click();
-  }
 }

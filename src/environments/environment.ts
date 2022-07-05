@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiUrl: "https://localhost:7132/api",
-  apiUrl: "http://likeable.v4y.hu/todoapi/api",
+  apiUrl: "https://localhost:7132/api",
+  //apiUrl: "http://likeable.v4y.hu/todoapi/api",
 };
 
 /*

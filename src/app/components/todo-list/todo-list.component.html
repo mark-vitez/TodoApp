@@ -1,0 +1,19 @@
+<div>
+
+    <div *ngIf="listLoading; then loading else list"></div>
+</div>
+
+
+<ng-template #loading >
+    <span class="loading-screen">
+        <app-spinner [size]="120" ></app-spinner>
+    </span>    
+</ng-template>
+
+<ng-template #list>
+    <h1>{{todoList.name}}</h1>
+    <div *ngFor="let task of todoList.tasks" style="max-width: 100%;">
+        <app-task-card [task]="task" ></app-task-card>
+    </div>
+    
+</ng-template>

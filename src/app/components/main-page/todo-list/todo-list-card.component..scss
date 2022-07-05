@@ -11,8 +11,17 @@ $header-gradient: linear-gradient(180deg, $accent-end, $form-color);
 }
 
 .todo-card{
+
+    .trim-ends{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;           
+    }
+
     box-sizing: content-box;
-    height: fit-content;
+    height: fit-content;    
+    border: 0.5px solid lightgray;
+    border-radius: 16px;
     
     .header{
         background: $header-gradient;
@@ -20,7 +29,6 @@ $header-gradient: linear-gradient(180deg, $accent-end, $form-color);
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
         padding: 8px 12px;
-
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -40,29 +48,36 @@ $header-gradient: linear-gradient(180deg, $accent-end, $form-color);
     .content{
         height: fit-content;
         ul{
-            height: 126px;
-            min-height: 126px;
+            height: 115px;
             padding: 0;
-            border: 1px solid lightgray;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
+            margin: 0;
             li{
-                font-size: 16px;         
-                height: 42px;       
+                font-size: 16px;    
+                max-height: 33.3%;
+                min-height: 33.3%;
                 width: 100%;
                 text-decoration: none;
                 list-style: none;
-                border: 0.5px solid lightgray;
-                border-collapse: collapse;
+                border-bottom: 1px solid lightgray;                
                 padding: 8px 12px !important;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
             }
             li:nth-child(3){
                 border: none;
             }           
         }
         
+    }
+
+    .footer{
+        padding: 4px 24px 8px 24px;
+        border-top: 0.5px solid lightgray;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .date{
+            font-size: 12px;
+            font-style: italic;
+        }        
     }
 }
