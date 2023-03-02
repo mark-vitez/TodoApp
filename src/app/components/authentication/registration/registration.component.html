@@ -1,16 +1,5 @@
 <form (ngSubmit)="register()" class="auth-form">
     <div class="form-floating">
-        <input required id="firstName" class="form-control" type="text" name="firstName" placeholder="John"
-            [(ngModel)]="firstName">
-        <label for="firstName" class="form-label">First Name</label>
-    </div>
-
-    <div class="form-floating">
-        <input id="lastName" class="form-control" type="text" name="lastName" placeholder="Doe"
-            [(ngModel)]="lastName">
-        <label for="lastName" class="form-label">Last Name</label>
-    </div>
-    <div class="form-floating">
         <input id="email" class="form-control" type="email" name="email" placeholder="name@example.com"
             [(ngModel)]="email">
         <label for="email" class="form-label">Email address</label>

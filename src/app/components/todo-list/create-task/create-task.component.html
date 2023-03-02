@@ -1,0 +1,23 @@
+<button type="button" #taskDialogTrigger data-bs-toggle="modal" data-bs-target="#create-task" style="display: none;"> 
+</button>
+
+<button type="button" #closeDialog data-bs-dismiss="modal" data-bs-target="#create-task" style="display: none;"> 
+</button>
+  
+  <!-- Modal -->
+<div class="modal fade" id="create-task" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-body">
+        <div class="task-form">
+            <label for="description" class="form-label">Task description</label>
+            <textarea id="description" class="form-control" type="text" name="description" placeholder="Get some eggs." [(ngModel)]="taskDescription"></textarea>            
+          </div>      
+    </div>
+    <div class="modal-footer">
+        <div class="cust-button" (click)="cancel()">Cancel</div>
+        <div class="cust-button" (click)="sendData()">Submit</div>
+    </div>
+    </div>
+</div>
+</div>

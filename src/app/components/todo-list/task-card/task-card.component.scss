@@ -1,7 +1,62 @@
 :host{
-    display: block;
-    border: 0.5px solid black;
-    border-radius: 16px;
-    margin: 8px 5px;
-    padding: 8px 16px;
+    
+    .task-card:hover{
+        box-shadow: 0px 5px 7.5px 0px rgba(0,0,0,.25);
+    }
+
+    .task-card{
+        background-color: #f6fafd;
+        color: #44426e;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 0.5px solid #daedfb;
+        border-radius: 16px;
+        margin: 8px 5px;
+        padding: 8px 16px;
+        box-shadow: 0px 2px 3.5px 0px rgba(0,0,0,.25);
+
+        .task-state{
+            .form-check-input{
+                width: 20px;
+                height: 20px;
+            };
+        }
+
+        .task{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            padding: 8px 16px;
+            min-height: fit-content;
+            
+            .task-date{
+                font-size: 12px;
+                font-style: italic;            
+                text-align: end;
+                //color: #988bab;
+            }
+
+            .strike{
+                text-decoration: line-through;
+                font-style: italic;
+            }
+        }
+
+        .task-action{
+            img{
+                width: 32px;
+                height: 32px;
+                transition: 200ms ease-in;
+                filter: invert(23%) sepia(8%) saturate(3458%) hue-rotate(204deg) brightness(95%) contrast(83%);
+            }
+
+            img:hover{
+                filter: invert(11%) sepia(84%) saturate(7460%) hue-rotate(0deg) brightness(96%) contrast(115%);               
+            }
+        }
+
+    }
+
+    
 }

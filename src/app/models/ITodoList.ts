@@ -10,7 +10,7 @@ export interface ITodoList{
 
 export interface ITodoListsResponse{
     data: ITodoList[],
-    successState: HTTP_STATE,
+    state: HTTP_STATE,
     message: string;
 }
 

@@ -31,9 +31,13 @@ export class TokenInterceptor implements HttpInterceptor {
       var newReq = req.clone({ setHeaders: { "Authorization": token } });     
       return next.handle(newReq).pipe(
         catchError((err) => {
+          console.error(err);          
           if (err.status === HttpStatusCode.UNAUTHORIZED) {
             console.log('Token expired');
+            console.warn(err.url);        
             return this._refreshTokenAndRepeatReq(req, next);
+          }else if(err.status === 400 && err.url.includes('refreshToken')) {
+            this._userSevice.logOut();            
           }
           return of(err)
         }),
@@ -65,8 +69,7 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler): Observable<HttpEvent<any>> {
     let body = {
       userId: this._userSevice.user.userId,
-      firstName: this._userSevice.user.firstName,
-      lastName: this._userSevice.user.lastName,
+      email: this._userSevice.user.email,
       token: this._userSevice.getAccessToken(),
       refreshToken: this._userSevice.getRefreshToken()
     }
@@ -74,7 +77,7 @@ export class TokenInterceptor implements HttpInterceptor {
     console.log(body);
     
     
-    return this._httpClient.post<ILoginResponse>(this._apiBaseUrl + '/account/refreshToken', body, { responseType: "json" }).pipe(
+    return this._httpClient.post<ILoginResponse>(this._apiBaseUrl + '/authentication/refreshToken', body, { responseType: "json" }).pipe(
       switchMap((res) => {
         console.log('refresh ');
         

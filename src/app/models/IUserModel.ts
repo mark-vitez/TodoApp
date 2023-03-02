@@ -1,7 +1,6 @@
 export interface IUserModel {
-    userId: string,
-    firstName: string,
-    lastName: string,
-    token: string,
-    refreshToken: string
+  userId: string;
+  email: string;
+  token: string;
+  refreshToken: string;
 }

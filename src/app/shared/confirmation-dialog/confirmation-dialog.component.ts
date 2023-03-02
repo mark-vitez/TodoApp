@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { trigger } from '@angular/animations';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -7,7 +8,8 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, Vie
 })
 export class ConfirmationDialogComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('trigger') button: ElementRef;
+  @Input() question: string = 'Are you sure?';
+  @ViewChild('trigger') button: ElementRef;  
 
   @Output() dialogChoice = new EventEmitter<boolean>();
 

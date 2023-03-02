@@ -1,4 +1,18 @@
+@import "./css/variables.scss";
+
 .application{
     height: 100%;
+
+    .header{
+        height: $header-height;
+    }
+
+    .page{
+        height: calc(100% - #{$header-height} - #{$footer-height});
+    }
+
+    .footer{
+        height: $footer-height;
+    }
 }
 

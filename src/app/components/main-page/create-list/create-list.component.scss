@@ -1,0 +1,27 @@
+@import "../../../css/variables.scss";
+// @import "../../../css/form.scss";
+
+.task-form{
+    text-align: start;
+}
+
+
+.modal-body{
+    text-align: center;
+}
+
+.modal-footer{
+    justify-content: space-between;
+    .cust-button{
+        border-radius: 24px;
+        background-color: $disabled;
+        width: 45%;
+        font-size: 16px;
+        text-align: center;
+        padding: 6px 3px;
+    }
+    .cust-button:nth-child(2){
+        background-image: $gradient-color;
+        color: white ;
+    }
+}

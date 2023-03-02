@@ -1,16 +1,14 @@
-import { HTTP_STATE } from "../constants"
+import { HTTP_STATE } from "../constants";
 
 export interface ILoginResponse {
-    data: ILoginResponseData,
-    state: HTTP_STATE,
-    message: string
+  data: ILoginResponseData;
+  state: HTTP_STATE;
+  message: string;
 }
 
 export interface ILoginResponseData {
-    userId: string,
-    firstName: string,
-    lastName: string,
-    token: string,
-    refreshToken: string
+  userId: string;
+  email: string;
+  token: string;
+  refreshToken: string;
 }
-

@@ -1,3 +1,23 @@
-<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-{{task.description}}
-{{task.creationDate | date:'short'}}
+<div class="task-card" (click)="cardTapped()">
+  <div class="task">
+    <span class="task-description" [ngClass]="{'strike':task.done}">
+      {{task.description}}
+    </span>
+    <span class="task-date">
+      {{task.creationDate | date:'short'}}
+    </span>
+  </div>
+  <div class="task-action" (click)="$event.stopPropagation();updateTaskState()">
+    <img src="assets/button-icons/finish-task.svg" alt="finish" />
+  </div>
+  <div class="task-action" (click)="$event.stopPropagation();deleteTapped()">
+    <img src="assets/button-icons/delete-task.svg" alt="delete" />
+  </div>
+</div>
+
+<app-confirmation-dialog
+  *ngIf="showDeleteDialog"
+  [question]="'Delete task?'"
+  (dialogChoice)="deleteDialogClosed($event)"
+></app-confirmation-dialog>
+<app-confirmation-dialog *ngIf="false"></app-confirmation-dialog>
