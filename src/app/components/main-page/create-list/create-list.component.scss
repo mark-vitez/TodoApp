@@ -1,27 +1,17 @@
 @import "../../../css/variables.scss";
 // @import "../../../css/form.scss";
 
-.task-form{
+.task-form {
     text-align: start;
 }
 
-
-.modal-body{
+.modal-body {
     text-align: center;
 }
 
-.modal-footer{
+.modal-footer {
     justify-content: space-between;
-    .cust-button{
-        border-radius: 24px;
-        background-color: $disabled;
+    div {
         width: 45%;
-        font-size: 16px;
-        text-align: center;
-        padding: 6px 3px;
-    }
-    .cust-button:nth-child(2){
-        background-image: $gradient-color;
-        color: white ;
     }
 }

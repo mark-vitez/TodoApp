@@ -10,7 +10,7 @@ import { HeaderComponent } from "./nav/header/header.component";
 import { AuthenticationComponent } from "./components/authentication/authentication.component";
 import { RegistrationComponent } from "./components/authentication/registration/registration.component";
 import { MainPageComponent } from "./components/main-page/main-page.component";
-import { TodoListCardComponent } from "./components/main-page/todo-list/todo-list-card.component";
+import { TodoListCardComponent } from "./components/main-page/todo-list-card/todo-list-card.component";
 import { TodoListComponent } from "./components/todo-list/todo-list.component";
 import { TaskCardComponent } from "./components/todo-list/task-card/task-card.component";
 import { CreateTaskComponent } from "./components/todo-list/create-task/create-task.component";
@@ -37,14 +37,13 @@ import { MessageService } from "./services/message.service";
     CreateListComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    SharedModule,
+    SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

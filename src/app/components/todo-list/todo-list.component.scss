@@ -1,49 +1,56 @@
 .loading-screen {
-  display: block;
-  width: fit-content;
-  margin: auto;
+    display: block;
+    width: fit-content;
+    margin: auto;
 
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .header-container {
-  background-color: #988bab;
-  //background-color: #44426e;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  .list-header {
-    width: 100%;
-    background-color: #44426e;
-    color: white;
-    text-align: center;
-    padding: 16px 0;
+    background-color: #988bab;
+    //background-color: #44426e;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
+    .list-header {
+        width: 100%;
+        background-color: #44426e;
+        color: white;
+        text-align: center;
+        padding: 16px 0;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        div {
+            width: 33.3%;
+        }
+
+        .back {
+            img {
+                width: 32px;
+                height: 32px;
+                filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(254deg) brightness(104%) contrast(103%);
+            }
+        }
+    }
+
+    .action-row {
+        padding: 8px 16px;
+        background-color: transparent;
+        color: white;
+        text-align: center;
+    }
+}
+
+.no-tasks {
+    height: 300px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    div {
-      width: 33.3%;
-    }
-
-    .back {
-      img {
-        width: 32px;
-        height: 32px;
-        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(254deg)
-          brightness(104%) contrast(103%);
-      }
-    }
-  }
-
-  .action-row {
-    padding: 8px 16px;
-    background-color: transparent;
-    color: white;
-    text-align: center;
-  }
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
 }

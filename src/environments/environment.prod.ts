@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  apiUrl: "http://markvitez.eu/todo-api",
+    production: true,
+    apiUrl: "https://todo.markvitez.eu:8080",
 };

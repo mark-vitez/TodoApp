@@ -1,0 +1,63 @@
+@import "./../../css/variables.scss";
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    width: 100%;
+
+    transition: box-shadow 200ms linear;
+
+    img {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    &.icon {
+        padding: 0.2rem;
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    &.primary {
+        background-image: $primary-button-bg;
+        color: $primary-button-font;
+    }
+
+    &.light {
+        background-color: $light-button-bg;
+        color: $light-button-font;
+    }
+
+    &.secondary {
+        background-color: $secondary-button-bg;
+        color: $secondary-button-font;
+    }
+
+    &:hover {
+        box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    &:disabled {
+        box-shadow: none !important;
+        background-color: $disabled-button-bg !important;
+        color: $disabled-button-font !important;
+        cursor: default;
+    }
+}

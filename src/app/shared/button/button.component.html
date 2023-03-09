@@ -1,0 +1,6 @@
+<div>
+    <button [disabled]="disabled" [ngClass]="type" (click)="handleClick($event)">
+        <img *ngIf="icon" src="{{ icon }}" />
+        <div>{{ label }}</div>
+    </button>
+</div>

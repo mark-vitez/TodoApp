@@ -1,5 +1,4 @@
 <div class="page-content">
-    
     <!-- <app-input [id]="'test'" [label]="'test'"></app-input> -->
 
     <div class="auth-container">
@@ -10,10 +9,6 @@
         <div class="auth-form">
             <app-login *ngIf="isLogin" (userInfo)="login($event)"></app-login>
             <app-registration *ngIf="!isLogin" (registrationForm)="register($event)"></app-registration>
-            <div class="custom-button" (click)="clickSubmit()">
-                {{buttonLabel}}
-            </div>
         </div>
     </div>
-    
 </div>

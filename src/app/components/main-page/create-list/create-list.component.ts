@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MessageService } from 'src/app/services/message.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-list',
@@ -32,7 +33,6 @@ export class CreateListComponent implements OnInit, AfterViewInit {
 
   sendData(): void{
     if(this.listName){
-      console.log(this.listName);
       this.dialogCloseEvent.emit(this.listName); 
       this._close();
     }else{

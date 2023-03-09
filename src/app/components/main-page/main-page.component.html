@@ -1,27 +1,15 @@
 <div class="main-content">
-  <div class="add-line">
-    <div class="line"></div>
-    <div class="add">
-      <img
-        src="assets/button-icons/add.svg"
-        alt="add"
-        (click)="openTodolistCreationDialog()"
-      />
+    <div class="add-line">
+        <div class="line"></div>
+        <app-button class="add" [type]="'secondary'" [icon]="'assets/button-icons/add.svg'" (clickEvt)="openTodolistCreationDialog()"></app-button>
+        <div class="line-continuation"></div>
     </div>
-    <div class="line-continuation"></div>
-  </div>
 
-  <div class="row">
-    <div
-      *ngFor="let list of todoLists; let i = index"
-      class="col-lg-3 col-md-4 col-sm-6 col-6 todo-list"
-    >
-      <app-todo-list-card [todoList]="list"></app-todo-list-card>
+    <div class="row">
+        <div *ngFor="let list of todoLists; let i = index" class="col-lg-3 col-md-4 col-sm-6 col-6 todo-list">
+            <app-todo-list-card [todoList]="list" (refreshLists)="getTodoListsForUser()"></app-todo-list-card>
+        </div>
     </div>
-  </div>
 
-  <app-create-list
-    *ngIf="showListCreation"
-    (dialogCloseEvent)="closeDialog($event)"
-  ></app-create-list>
+    <app-create-list *ngIf="showListCreation" (dialogCloseEvent)="closeDialog($event)"></app-create-list>
 </div>

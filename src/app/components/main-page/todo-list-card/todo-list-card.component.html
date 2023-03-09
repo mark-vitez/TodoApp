@@ -1,0 +1,25 @@
+<div class="todo-card">
+    <div class="header">
+        <div class="header-text trim-ends">{{todoList.name}}</div>
+        <app-button [type]="'icon'" [icon]="'assets/button-icons/delete-white.svg'" (clickEvt)="openConfirmationDialog();"></app-button>
+    </div>
+    <div class="content" (click)="openList(todoList.id)">
+        <div class="my-card-body">
+            <ul *ngIf="hasTasks;else noTask">
+                <li class="trim-ends">{{todoList.tasks[0]?.description}}</li>
+                <li class="trim-ends">{{todoList.tasks[1]?.description}}</li>
+                <li class="trim-ends">{{todoList.tasks[2]?.description}}</li>
+            </ul>
+            <ng-template #noTask>
+                <div class="no-task">No tasks yet :(</div>
+            </ng-template>
+        </div>
+
+        <div class="card-footer">
+            <span class="date"> {{todoList.creationDate | date:'shortDate'}} </span>
+            <span class="date"> ... </span>
+        </div>
+    </div>
+</div>
+
+<app-confirmation-dialog *ngIf="showListConfirmation" (dialogChoice)="handleChoice($event)" [question]="dialogQuestion"></app-confirmation-dialog>

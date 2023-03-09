@@ -63,8 +63,6 @@ export class HttpService {
   }
 
   patchRequest<T>(action: string, data?: any, params?: any) {
-    console.log(action);
-
     return this._httpClient.patch<T>(this._apiBaseUrl + action, data);
   }
 }

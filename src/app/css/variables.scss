@@ -1,6 +1,4 @@
-
 $accent-start: #292643;
-
 
 $disabled: #bbaab8;
 
@@ -10,6 +8,18 @@ $gradinet-start: #44426e;
 $spinner-color: #44426e;
 
 $gradient-color: linear-gradient(180deg, $gradinet-start, $gradient-end);
+
+$primary-button-bg: linear-gradient(180deg, $gradinet-start, $gradient-end);
+$primary-button-font: white;
+
+$secondary-button-bg: #bbaab8;
+$secondary-button-font: black;
+
+$light-button-bg: white;
+$light-button-font: black;
+
+$disabled-button-bg: #d1d1d1;
+$disabled-button-font: #999999;
 
 $header-height: 70px;
 

@@ -4,6 +4,7 @@ import { INoContentResponse } from "src/app/models/INoContentResponse";
 import { ITodoTask } from "src/app/models/ITodoTask";
 import { HttpService } from "src/app/services/http.service";
 import { LoadingService } from "src/app/services/loading.service";
+import { MessageService } from "src/app/services/message.service";
 
 @Component({
   selector: "app-task-card",
@@ -19,7 +20,8 @@ export class TaskCardComponent implements OnInit {
 
   constructor(
     private _httpService: HttpService,
-    private _loadingService: LoadingService
+    private _loadingService: LoadingService,
+    private _messageService: MessageService
   ) {}
 
   ngOnInit(): void {}
@@ -36,6 +38,7 @@ export class TaskCardComponent implements OnInit {
         if (res.state === HTTP_STATE.SUCCESS) {
           this.task.done = !this.task.done;
         } else {
+            this._messageService.ErrorMessage("There was a problem changing the state of the task.");
         }
 
         this._loadingService.hide();
@@ -67,6 +70,8 @@ export class TaskCardComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.state === HTTP_STATE.SUCCESS) {
           window.location.reload();
+        }else {
+            this._messageService.ErrorMessage("There was a problem deleting the task.");
         }
       });
   }

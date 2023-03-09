@@ -1,20 +1,18 @@
-
 $disabled: #bbaab8;
 $form-color: #776483;
 $accent-start: #292643;
 $accent-end: #44426e;
 $header-gradient: linear-gradient(180deg, $accent-end, $form-color);
 
-.main-content{
+.main-content {
     width: 90%;
     margin: auto;
     margin-top: 32px;
-    .todo-list{
-        margin-bottom: 24px; 
+    .todo-list {
+        margin-bottom: 24px;
     }
 
-
-    .add-line{
+    .add-line {
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -22,39 +20,35 @@ $header-gradient: linear-gradient(180deg, $accent-end, $form-color);
         align-items: center;
         margin-bottom: 32px;
 
-        .line{
+        .line {
             width: 83%;
-            height: .5px;
-            border: .5px solid gray;
+            height: 0.5px;
+            border: 0.5px solid gray;
             background-color: gray;
         }
-    
-        .line-continuation{
+
+        .line-continuation {
             width: 5%;
-            height: .5px;
-            border: .5px solid gray;
+            height: 0.5px;
+            border: 0.5px solid gray;
             background-color: gray;
         }
-    
-        .add{
-            background: #e99e75;
-            width: 32px;
-            height: 32px;
-            text-align: center;
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            
-            img{
-                width: 24px;
-                height: 24px;
-            }
+
+        .add {
+            transform: translate(-4px, 0);
+            // background: #e99e75;
+            // width: 32px;
+            // height: 32px;
+            // text-align: center;
+            // border-radius: 50%;
+            // align-items: center;
+            // justify-content: center;
+            // display: flex;
+
+            // img {
+            //     width: 24px;
+            //     height: 24px;
+            // }
         }
-
-     
     }
-
-
-
 }

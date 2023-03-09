@@ -1,48 +1,43 @@
 <div>
-  <div *ngIf="listLoading; then loading else list"></div>
+    <div *ngIf="listLoading; then loading; else list"></div>
 </div>
 
 <ng-template #loading>
-  <span class="loading-screen">
-    <app-spinner [size]="120"></app-spinner>
-  </span>
+    <span class="loading-screen">
+        <app-spinner [size]="120"></app-spinner>
+    </span>
 </ng-template>
 
 <ng-template #list>
-  <div class="header-container">
-    <div class="list-header">
-      <div (click)="goBack()" class="back">
-        <img src="assets/button-icons/back.svg" alt="back" />
-      </div>
-      <div><h2>{{todoList.name}}</h2></div>
+    <div class="header-container">
+        <div class="list-header">
+            <div (click)="goBack()" class="back">
+                <img src="assets/button-icons/back.svg" alt="back" />
+            </div>
+            <div>
+                <h2>{{ todoList.name }}</h2>
+            </div>
 
-      <div></div>
-    </div>
-
-    <div class="action-row">
-      <div class="row">
-        <div class="col-6" (click)="openTaskCreationDialog()">
-          Add task
+            <div></div>
         </div>
-        <div
-          class="col-6"
-          style="border-left: 1px solid black;"
-          (click)="deleteList()"
-        >
-          Delete List
+
+        <div class="action-row">
+            <div class="row">
+                <div class="col-6" (click)="openTaskCreationDialog()">Add task</div>
+                <div class="col-6" style="border-left: 1px solid black" (click)="openConfirmationDialog()">Delete List</div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div *ngFor="let task of tasks" style="max-width: 100%;">
-      <app-task-card [task]="task"></app-task-card>
+    <div class="container">
+        <div *ngFor="let task of tasks" style="max-width: 100%">
+            <app-task-card [task]="task"></app-task-card>
+        </div>
+
+        <div *ngIf="!hasTasks" class="no-tasks">No tasks yet</div>
     </div>
-  </div>
 
-  <app-create-task
-    *ngIf="showCreateTaskDialog"
-    (dialogCloseEvent)="closeDialog($event)"
-  ></app-create-task>
+    <app-create-task *ngIf="showCreateTaskDialog" (dialogCloseEvent)="closeDialog($event)"></app-create-task>
+
+    <app-confirmation-dialog *ngIf="showListConfirmation" (dialogChoice)="handleChoice($event)" [question]="dialogQuestion"></app-confirmation-dialog>
 </ng-template>

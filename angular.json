@@ -45,6 +45,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "outputPath":"dist/prod/TodoApp",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
